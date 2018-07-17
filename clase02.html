@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Clase02.Js.Eventos</title>
+</head>
+<body>
+	<div>
+		Nombre: <input type="text" name="nombre"><br/>
+		Apellido: <input type="text" name="apellido"><br/>
+		<button>Enviar</button>
+	</div>
+	<script>
+		//Ejemplo de eventos
+
+		//1 - Seleccionar elemento del DOM
+		let btn = document.querySelector("button");
+		//2 - Subscribirme al evento "click" del boton
+		const clickHandler = () => {
+			console.log('Hola!');
+		}
+		//btn.onclick = clickHandler; //2do intento para manejar eventos
+		btn.addEventListener("click", clickHandler);
+
+		//Desde otro modulo archivo.js
+		const clickHandlerV2 = () => {
+			console.log("Otro Handler");
+		}
+		btn.addEventListener("click", clickHandlerV2);
+
+		//Remover callbacks
+		//btn.removeEventListener("click", clickHandler);
+
+		//Otros eventos
+		const focusHandler = (e) => {
+			console.log(e);
+			console.log("Foco",e.target);
+		}
+
+		const blurHandler = (e) => {
+			console.log("Blur",e.target);
+		}
+
+		/*let nombre = document.querySelector("input[name=nombre]");
+		nombre.addEventListener("focus", focusHandler);
+		nombre.addEventListener("blur", blurHandler);
+
+		let apellido = document.querySelector("input[name=apellido]");
+		apellido.addEventListener("focus", focusHandler);
+		apellido.addEventListener("blur", blurHandler);
+		*/
+
+		//querySelectorAll
+		let inputs = document.querySelectorAll("input");
+		inputs.forEach((item)=>{
+			item.addEventListener("focus", focusHandler);
+			item.addEventListener("blur", blurHandler);
+		});
+
+	</script>
+</body>
+</html>

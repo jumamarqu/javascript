@@ -1,0 +1,12 @@
+// 1 - Construir un formulario HTML con los siguientes campos...
+// Nombre, Apellido, Email, Password, Password2
+// 2 - Validar al momento de enviar los datos que los 
+//	campos no esten vacios y que Password y Password2 sean iguales
+// 3 - Si no son iguales los pass o algun campo esta vacio informar al usuario el error.
+// 4 - YAPA. Validar los datos al momento del blur (lost focus)
+
+//Herramientas:
+- Eventos
+- Elementos del DOM
+- HTML
+- Callbacks

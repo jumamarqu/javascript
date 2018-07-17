@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Clase02.js</title>
+	<style>
+		.small {
+			width: 400px;
+			padding: 30px;
+			background-color: black;
+		}
+		.medium {
+			width: 600px;
+			background-color: grey;
+		}
+		.large {
+			width: 800px;
+			background-color: darkgrey;
+		}
+	</style>
+</head>
+<body>
+	<div class="large">
+		<div class="medium">
+			<div class="small"></div>
+		</div>
+	</div>
+	<script>
+		//Ejemplo de eventos
+		let letras = ["q","w","e","r","t","y","u","i"];
+		
+		const clickHandler = (e) => {
+			let colors = ["green","orange","blue","red","yellow"];
+			let color = colors[Math.floor(Math.random() * colors.length)];
+
+			console.log(e.target);
+			if(e.target.style.backgroundColor != ""){
+				e.target.style.backgroundColor = "";
+			}else{
+				e.target.style.backgroundColor = color;
+			}
+			//Evitar el bubbling
+			e.stopPropagation();
+		}
+
+		//Creo el elemento dinamicamente y me subscribo al evento click
+		letras.forEach((letra)=>{
+			let element = document.createElement("button");
+			element.innerText = letra;
+			element.addEventListener("click", clickHandler);
+			document.querySelector(".small").appendChild(element);
+		});
+
+		//Agrego listener de click en divs
+		let divs = document.querySelectorAll("div");
+		divs.forEach(div=>{
+			div.addEventListener("click", clickHandler);
+		});
+
+	</script>
+</body>
+</html>
