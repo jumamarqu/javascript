@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+    <div>
+          <form>
+        NOMBRE: <input name="nombre" type="text" required="required"><br/>
+        EMAIL: <input type="email" name="email" required><br/>
+        CLAVE: <input type="password" name="clave" required><br/>
+        CLAVE: <input type="password" required name="clave2" title="Ingresa nuevamente la misma clave"><br/>
+        <button>Enviar</button><br/>
+        <h3></h3>
+      </form>
+    </div>
+<script>
+let inputs= document.querySelectorAll("input");
+const inputNotEmpty= (e)=>{
+      let h3=document.querySelector("h3");
+   if(e.target.value===""){
+     console.log(e.target.name, "empty");
+   h3.innerHTML= e.target.name + " vacio \n" ;
+      }
+      else{
+            h3.innerHTML="";
+        }
+}  
+inputs.forEach((item)=>{
+    item.addEventListener("blur",inputNotEmpty);
+});
+
+
+const claveNotEqual=()=>{
+      let clave= document.querySelector("input[name=clave]").value;
+      let clave2= document.querySelector("input[name=clave2]").value; 
+      let h3=document.querySelector("h3");  
+        if (clave!=clave2){
+        let h3=document.querySelector("h3");
+        h3.innerHTML="Las claves no coinciden";
+        }
+        else{
+            h3.innerHTML="";
+        }
+        console.log(`las claves son ${clave}, y ${clave2}`);
+}
+let claves= document.querySelectorAll("input[type=password]"); 
+claves.forEach( (item)=>{
+      item.addEventListener("blur",claveNotEqual);
+});
+
+
+const enviar= document.querySelector("button");
+//enviar.addEventListener("click",inputNotEmpty);
+</script>
+</body>
